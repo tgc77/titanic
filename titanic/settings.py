@@ -25,8 +25,8 @@ SECRET_KEY = '8wa!&$5!@^kfb7u1^od)=zi0te4985p8)%92cxzl_y3l4+(9ve'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['titanic-ia.herokuapp.com']
-
+ALLOWED_HOSTS = []
+#'titanic-ia.herokuapp.com'
 
 # Application definition
 
