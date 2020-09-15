@@ -24,7 +24,7 @@ def replace_titles(x):
     else:
         return title
 
-def run_ml_train_model():
+def get_xy_train_model():
     df = pd.read_csv('train.csv')
 
     # A list with the all the different titles
@@ -45,8 +45,12 @@ def run_ml_train_model():
 
     predictors = df.drop(['Survived', 'PassengerId'], axis=1)
     target = df["Survived"]
-    x_train, x_val, y_train, y_val = train_test_split(predictors, target, test_size = 0.1, random_state = 0)
 
+    return predictors, target
+
+def run_ml_train_model():
+    predictors, target = get_xy_train_model()
+    x_train, x_val, y_train, y_val = train_test_split(predictors, target, test_size = 0.1, random_state = 0)
 
     randomforest = RandomForestClassifier()
     randomforest.fit(x_train, y_train)

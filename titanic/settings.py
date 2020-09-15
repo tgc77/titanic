@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +24,7 @@ SECRET_KEY = '8wa!&$5!@^kfb7u1^od)=zi0te4985p8)%92cxzl_y3l4+(9ve'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['titanic-ia.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','titanic-ia.herokuapp.com']
 
 
 # Application definition
@@ -119,5 +118,9 @@ USE_TZ = True
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = (os.path.join('static'),)
 
-django_heroku.settings(locals())
+import socket
+if socket.gethostname() == 'titanic-ia.herokuapp.com':
+    import django_heroku
+    django_heroku.settings(locals())
